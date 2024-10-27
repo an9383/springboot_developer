@@ -1,0 +1,28 @@
+# 개발 및 테스트용 설정 파일
+# PostgreSQL DBMS 사용
+
+server:
+  port: 8090 # 포트번호 설정
+
+spring:
+  # PostgreSQL DB 설정
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/mydb
+    username: postgres
+    password: 1234
+  # data.sql 파일 초기화 설정
+  sql:
+    init:
+      mode: never # always: 매번 실행, never: 실행하지 않음
+  # JPA 설정
+  jpa:
+    # ddl 파일에 대한 설정 규칙
+    hibernate:
+      ddl-auto: update # DB 초기화 전략 (none, create, create-drop, update, validate)
+    properties:
+      hibernate:
+        show-sql: true # 쿼리문 출력
+        format_sql: true # 쿼리문을 보기 좋게 출력
+    # 테이블 생성 후에 data.sql 파일을 실행
+    #defer-datasource-initialization: true

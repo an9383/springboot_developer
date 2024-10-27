@@ -1,0 +1,33 @@
+# 테스트용 설정파일
+# H2 DB 사용
+
+server:
+  port: 8090 # 포트번호 설정
+
+spring:
+  # H2 DB 설정
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:testdb # H2 DB URL
+    username: sa            # DB 계정
+    password:               # DB 비밀번호
+  # H2 DB console 설정
+  h2:
+    console:
+      enabled: true     # H2 DB console 활성화
+      path: /h2-console # H2 DB console URL
+  # data.sql 파일 초기화 설정
+  sql:
+    init:
+      mode: never # always: 매번 실행, never: 실행하지 않음
+  # JPA 설정
+  jpa:
+    # ddl 파일에 대한 설정 규칙
+    hibernate:
+      ddl-auto: create # DB 초기화 전략 (none, create, create-drop, update, validate)
+    properties:
+      hibernate:
+        show-sql: true # 쿼리문 출력
+        format_sql: true # 쿼리문을 보기 좋게 출력
+    # 테이블 생성 후에 data.sql 파일을 실행
+    #defer-datasource-initialization: true

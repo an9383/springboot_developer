@@ -1,0 +1,46 @@
+plugins {
+    id 'java'
+    // 스프링 부트 의존성 설정
+    id 'org.springframework.boot' version '3.3.3'
+    // 스프링 의존성 관리 시스템 설정
+    id 'io.spring.dependency-management' version '1.1.6'
+}
+
+group = 'org.sb0907'
+version = '1.0-SNAPSHOT'
+// JDK 버전
+sourceCompatibility = '17'
+
+repositories {
+    mavenCentral()
+}
+
+// 의존성 설정하는 부분
+dependencies {
+    //testImplementation platform('org.junit:junit-bom:5.10.0')
+    //testImplementation 'org.junit.jupiter:junit-jupiter'
+    // 스프링의 웹 기능 설정
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    // 스프링의 테스트 기능 설정
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    // devtools 설정
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    // JPA 설정
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    // H2 DB 설정 - 테스트용 사용
+    runtimeOnly 'com.h2database:h2'
+    // PostgreSQL 설정 - 개발 및 테스트용 사용
+    implementation 'org.postgresql:postgresql:42.7.4'
+    // lombok 설정
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    // QueryDSL 설정
+    implementation 'com.querydsl:querydsl-jpa:5.1.0:jakarta'
+    annotationProcessor 'com.querydsl:querydsl-apt:5.1.0:jakarta'
+    annotationProcessor 'jakarta.annotation:jakarta.annotation-api'
+    annotationProcessor 'jakarta.persistence:jakarta.persistence-api'
+}
+
+test {
+    useJUnitPlatform()
+}
